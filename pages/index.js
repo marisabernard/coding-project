@@ -44,14 +44,16 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>
+        <div className={styles.header}><h1>
           Public Github Repositories
         </h1>
+        </div>
 
+        <div className={styles.content}>
         <div className={styles.scrollgrid}>
           {publicRepos?.map((repo, index)=>{
             if(index === publicRepos?.length-1){
-              return <div className={styles.special} key={repo?.id}>
+              return <div className={styles.item} key={repo?.id}>
                 <a key={repo?.id} href={`${repo?.html_url}`} className={styles.card}>
             <h2>{repo?.full_name}</h2>
             <p>{repo?.description}</p>
@@ -60,11 +62,12 @@ export default function Home() {
               </div>
             }
             else {
-            return <a key={repo?.id} href={`${repo?.html_url}`} className={styles.card}>
+            return <div key={repo?.id} className={styles.item}><a  href={`${repo?.html_url}`} className={styles.card}>
             <h2>{repo?.full_name}</h2>
             <p>{repo?.description}</p>
-          </a>}
+          </a></div>}
           })}
+        </div>
         </div>
 
 
